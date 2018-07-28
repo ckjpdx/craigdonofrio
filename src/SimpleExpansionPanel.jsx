@@ -23,13 +23,15 @@ function SimpleExpansionPanel(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>{props.title}</Typography>
+          <Typography className={classes.heading}>{props.story.title}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <img src={props.picture}/>
-          <Typography>
-            {props.text}
-          </Typography>
+          <a href={props.story.link}>
+            <img src={props.story.img}/>
+            <Typography>
+              {props.story.blurb}
+            </Typography>
+          </a>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
