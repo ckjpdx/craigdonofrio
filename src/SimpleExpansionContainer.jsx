@@ -13,33 +13,28 @@ const styles = theme => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    fontWeight: 900,
+    fontWeight: theme.typography.fontWeightRegular,
   },
 });
 
-function SimpleExpansionPanel(props) {
+function SimpleExpansionContainer(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>{props.story.title}</Typography>
+          <h2>{props.title}</h2>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <a href={props.story.link}>
-            <img src={props.story.img} className="thumb"/>
-            <Typography>
-              {props.story.blurb}
-            </Typography>
-          </a>
+        <ExpansionPanelDetails style={{padding: 0}} >
+          {props.innerComponent}
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
   );
 }
 
-SimpleExpansionPanel.propTypes = {
+SimpleExpansionContainer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleExpansionPanel);
+export default withStyles(styles)(SimpleExpansionContainer);
